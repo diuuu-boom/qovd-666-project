@@ -1,0 +1,28 @@
+组装一台电脑:
+	我需要组装 CPU 、主板。
+	存在 主板 有品牌型号的不同，CPU 也有品牌和形状的不同，CPU 和 主板 是否匹配等问题...
+	
+	现在 有 Intel 和 AMD 两个厂商 可选择的 CPU
+	和    Intel 和 AMD 两个厂商的 主板（main board） 可以选择
+	
+	CPU针脚数 和 Mainboard针孔数 相同 才能匹配安装
+	
+	1. 简单工厂模式:
+		把 cup(处理器) 和 mainboard(主板) 抽象成两个接口 ，
+			在 cpu 接口中有计算 针脚的 方法------> calculate()
+			在 mainboard 接口中 有计算针孔的 方法 -------> installCPU()
+			
+	           分别有 intel 和 amd 两个厂商的产品实现类去分别实现 两个接口:
+	    	IntelCpu             AmdCpu
+	    	IntelMainboard       AmdMainboard
+	    
+	          构建两个工，一个工厂制造cpu 一个工厂制造mainboard 
+	          
+	    简单工厂模式出现的问题是 ：-----> 存在 当用户选择厂商的cpu 的针脚数 和 mainboard 的针空数 不匹配。
+	  解决方案： -----------> 把其中的 工厂抽成一个接口。  
+	 
+	 2. 抽象工厂模式:
+	       之前一个工厂不管是 Intel 的 cpu 和 mainboard 还是 AMD 的 cpu 和 mainboard 都生产，
+	        现在采用 抽象工厂模式，把之前的工厂抽象出一个接口，
+	        用 Intel 工厂类实现该抽象接口
+	        用 AMD 工厂类实现该工厂接口
